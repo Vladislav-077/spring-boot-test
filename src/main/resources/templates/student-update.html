@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Форма обновления записи</title>
+</head>
+<body>
+<h2>Форма обновления записи ученика</h2>
+ <form action="#" th:action="@{/student-update}" th:object="${student}" method="post">
+     <label for="id">ID</label>
+     <input readonly type="text" th:field="*{id}" id="id" placeholder="id">
+     <br>
+     <label for="name">Имя ученика</label>
+     <input type="text" th:field="*{name}" id="name" placeholder="Имя ученика">
+     <br>
+     <label for="classNumber">Номер класса</label>
+     <input type="number" th:field="*{classNumber}" id="classNumber" placeholder="Номер класса" min="1" max="11">
+     <br>
+     <label for="predmet">Предмет</label>
+     <input type="text" th:field="*{predmet}" id="predmet" placeholder="Название предмета">
+     <br>
+     <label for="rating">Оценка</label>
+     <input type="number" th:field="*{rating}" id="rating" placeholder="Оценка" min="1" max="5">
+     <br>
+     <input style="margin: 10px" type="submit" value="Обновить запись">
+     <input style="margin: 10px" type="reset" value="Очистить форму">
+      </form>
+</body>
+</html>

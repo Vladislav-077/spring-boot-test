@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Журнал оценок</title>
+</head>
+<body>
+<div th:switch="${students}">
+    <h2 th:case="null">Ученики не найдены!</h2>
+    <div th:case="*">
+        <h2>Журнал оценок</h2>
+        <table style="border: 1px solid">
+            <thead>
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Номер класса</th>
+                <th>Предмет</th>
+                <th>
+                    <form action="#" th:action="@{../student-findByRating}" method="get">
+                        <label>Оценка</label>
+                        <input type="number" name="rating" th:value="${rating}" placeholder="Оценка" min="1" max="5" style="width:70px">
+                        <input type="submit" value="найти">
+                    </form>
+                </th>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td style="text-align: center" th:text="${student.name}"></td>
+                <td style="text-align: center" th:text="${student.classNumber}"></td>
+                <td th:text="${student.predmet}"></td>
+                <td style="text-align: center" th:text="${student.rating}"><hr></td>
+                <td><a th:href="@{student-update/{id}(id=${student.id})}">Редактировать</a></td>
+                <td><a th:href="@{student-delete/{id}(id=${student.id})}">Удалить</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <p><a  style="border: 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; width: fit-content; padding: 10px;" href="/student-create">Создание ученика</a></p>
+</div>
+</body>
+</html>

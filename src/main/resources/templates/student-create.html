@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание ученика</title>
+</head>
+<body>
+<h2>Форма создания ученика</h2>
+<form action="#" th:action="@{/student-create}" th:object="${student}" method="post">
+    <label for="name">Имя ученика</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Имя ученика" minlength="2">
+    <br>
+    <label for="classNumber">Номер класса</label>
+    <input type="number" th:field="*{classNumber}"id="classNumber" placeholder="Номер класса" min="1" max="11">
+    <br>
+    <label for="predmet">Название предмета</label>
+    <input type="text" th:field="*{predmet}" id="predmet" placeholder="Название предмета" minlength="2">
+    <br>
+    <label for="rating">Оценка</label>
+    <input type="number" th:field="*{rating}" id="rating" placeholder="Оценка" min="1" max="5">
+    <br>
+    <input type="submit" value="Создать запись">
+    <input type="reset" value="Очистить форму">
+</form>
+</body>
+</html>
